@@ -9,6 +9,11 @@ public class Evento {
 	private ArrayList<Equipo> equipos;
 	private String fecha;
 
+	public Evento(Disciplina disciplina, String fecha){
+		this.disciplina = disciplina;
+		this.fecha = fecha;
+	}
+
 	public void agregarAtleta() {
 		// TODO - implement Evento.agregarAtleta
 		throw new UnsupportedOperationException();

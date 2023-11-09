@@ -5,14 +5,18 @@ import java.util.*;
 public class Equipo {
 
 	private Evento evento;
-	private Collection<Atleta> atletas;
 	private String nombre;
 	private ArrayList<Atleta> listaAtletas;
 	private Disciplina disciplina;
 
+	public Equipo(String nombre, Disciplina disciplina) {
+		this.nombre = nombre;
+		this.disciplina = disciplina;
+	}
+
 	public void agregarAtleta() {
-		// TODO - implement Equipo.agregarAtleta
-		throw new UnsupportedOperationException();
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Ingrese el equipo del atleta: ");
 	}
 
 	public void eliminarAtleta() {

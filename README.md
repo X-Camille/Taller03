@@ -5,7 +5,8 @@ ANÁLISIS DE LA PROBLEMÁTICA
 
 Gestión de atletas en los Juegos Paramericanos. 
 
-La clase que contendrá el método main será la clase Evento. 
+La clase que contendrá el método main será la clase JuegosParamericanos, 
+la cual permitirá crear eventos, equipos y registrar atletas/disciplinas. 
 
 Se trabajará con la instanciación de un evento de los Juegos Paramericanos. 
 
