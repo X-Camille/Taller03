@@ -1,5 +1,5 @@
 package org.example;
-
+// Completada
 import java.util.*;
 
 public class Atleta {

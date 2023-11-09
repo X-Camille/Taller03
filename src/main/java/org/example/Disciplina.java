@@ -1,5 +1,5 @@
 package org.example;
-
+// Completada
 public class Disciplina {
 	private String nombre;
 	private int numeroParticipantes;

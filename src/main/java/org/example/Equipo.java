@@ -1,5 +1,5 @@
 package org.example;
-
+// Completada
 import java.util.*;
 
 public class Equipo {
@@ -14,19 +14,26 @@ public class Equipo {
 		this.disciplina = disciplina;
 	}
 
-	public void agregarAtleta() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Ingrese el equipo del atleta: ");
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void eliminarAtleta() {
-		// TODO - implement Equipo.eliminarAtleta
-		throw new UnsupportedOperationException();
+
+	public void agregarAtleta(Atleta atleta) {
+		listaAtletas.add(atleta);
+	}
+
+	public void eliminarAtleta(Atleta atleta) {
+		listaAtletas.remove(atleta);
 	}
 
 	public void mostrarInformacionEquipo() {
-		// TODO - implement Equipo.mostrarInformacionEquipo
-		throw new UnsupportedOperationException();
+		System.out.println("Evento a participar: " + evento);
+		System.out.println("Nombre de equipo " + nombre);
+		System.out.println("Lista de atletas asociados al equipo: ");
+		for (Atleta atleta : listaAtletas){
+			atleta.mostrarInformacionAtleta();
+		}
+		System.out.println("Disciplina asociada " + disciplina);
 	}
-
 }

@@ -1,4 +1,5 @@
 package org.example;
+// Clase Principal
 import java.util.*;
 
 public class JuegosParamericanos {
@@ -67,13 +68,45 @@ public class JuegosParamericanos {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese el nombre del atleta: ");
         String nombre = scanner.nextLine();
-        System.out.println("Ingrese el país del atleta: ");
+        System.out.print("Ingrese el país del atleta: ");
         String pais = scanner.nextLine();
         System.out.println("Ingrese la edad del atleta: ");
-        int edad = scanner.nextInt();
+        int edad = obtenerEdad();
+
         Atleta atleta = new Atleta(nombre, pais, edad);
         atletas.add(atleta);
         System.out.println("Atleta registrado correctamente");
+    }
+
+    public int obtenerEdad(){
+        Scanner scanner = new Scanner(System.in);
+        int edad;
+        do {
+            edad = manejarExcepcionDeEntradaInt();
+        } while (!edadEsValida(edad));
+        return edad;
+    }
+    public boolean edadEsValida(int edad) {
+        if(edad <= 0){
+            System.out.println("La edad no puede ser negativa. Inténtelo nuevamente.");
+            return false;
+        } else if(edad <= 15 || edad > 35){
+            System.out.println("La edad no es válida para participar en los Juegos Paramericanos. Inténtelo nuevamente.");
+            return false;
+        }
+        return true;
+    }
+
+    private int manejarExcepcionDeEntradaInt() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.print("Entrada no válida. Por favor, ingrese un número entero positivo: ");
+                scanner.next();
+            }
+        }
     }
 
     public void registrarDisciplina() {
@@ -81,12 +114,31 @@ public class JuegosParamericanos {
         System.out.print("Ingrese el nombre de la disciplina: ");
         String nombre = scanner.nextLine();
         System.out.println("Ingrese el número de participantes: ");
-        int numeroParticipantes = scanner.nextInt();
+        int numeroParticipantes = obtenerParticipantes();
         System.out.println("Ingrese el récord mundial actual: ");
         String recordMundial = scanner.nextLine();
         Disciplina disciplina = new Disciplina(nombre, numeroParticipantes, recordMundial);
         disciplinas.add(disciplina);
         System.out.println("Disciplina registrada correctamente");
+    }
+
+    public int obtenerParticipantes(){
+        Scanner scanner = new Scanner(System.in);
+        int numero;
+        do {
+            numero = manejarExcepcionDeEntradaInt();
+        } while (!numeroEsValido(numero));
+        return numero;
+    }
+    public boolean numeroEsValido(int numero) {
+        if(numero <= 0){
+            System.out.println("Un equipo debe estar conformado de al menos un participante. Inténtelo nuevamente.");
+            return false;
+        } else if(numero > 30){
+            System.out.println("Número de participantes no válido. Inténtelo nuevamente.");
+            return false;
+        }
+        return true;
     }
 
     public void crearEquipo() {
@@ -135,10 +187,37 @@ public class JuegosParamericanos {
     }
 
     public void asignarAtletas() {
-        // Implementa la lógica para asignar atletas a eventos o equipos
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del equipo al que desea agregar atleta: ");
+        Equipo equipo = buscarEquipo(scanner.nextLine());
+        System.out.println("Ingrese el nombre del atleta al que quiere asignar: ");
+        Atleta atleta = buscarAtleta(scanner.nextLine());
+        if (atleta != null && equipo != null) {
+            equipo.agregarAtleta(atleta);
+        } else {
+            System.out.println("No se pudo asignar el atleta.");
+        }
+
+    }
+    public Equipo buscarEquipo(String nombreEquipo){
+        for (Equipo equipo : equipos) {
+            if (equipo.getNombre().equals(nombreEquipo)) {
+                return equipo;
+            }
+        }
+        return null;
+    }
+
+    public Atleta buscarAtleta(String nombreAtleta){
+        for(Atleta atleta : atletas){
+            if(atleta.getNombre().equalsIgnoreCase(nombreAtleta)){
+                return atleta;
+            }
+        }
+        return null;
     }
 
     public void asignarEquipos() {
-        // Implementa la lógica para asignar equipos a eventos
+        // Me faltó tiempo
     }
 }

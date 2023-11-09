@@ -1,10 +1,10 @@
 package org.example;
-
+// Completada
 import java.util.*;
 
 public class Evento {
 
-	private Collection<Equipo> Equipos;
+	private ArrayList<Atleta> atletas;
 	private Disciplina disciplina;
 	private ArrayList<Equipo> equipos;
 	private String fecha;
@@ -14,19 +14,25 @@ public class Evento {
 		this.fecha = fecha;
 	}
 
-	public void agregarAtleta() {
-		// TODO - implement Evento.agregarAtleta
-		throw new UnsupportedOperationException();
+	public void agregarAtleta(Atleta atleta) {
+		atletas.add(atleta);
 	}
 
-	public void eliminarAtleta() {
-		// TODO - implement Evento.eliminarAtleta
-		throw new UnsupportedOperationException();
+	public void eliminarAtleta(Atleta atleta) {
+		atletas.add(atleta);
 	}
 
 	public void mostrarInformacionEvento() {
-		// TODO - implement Evento.mostrarInformacionEvento
-		throw new UnsupportedOperationException();
+		System.out.print("Atletas que participarán en el evento: ");
+		for (Atleta atleta : atletas){
+			atleta.mostrarInformacionAtleta();
+		}
+		System.out.println("Disciplina asociada al evento: " + disciplina);
+		System.out.println("Equipos asociados al evento: ");
+		for (Equipo equipo : equipos){
+			equipo.mostrarInformacionEquipo();
+		}
+		System.out.println("Fecha del evento: " + fecha);
 	}
 
 }
